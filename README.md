@@ -1,264 +1,221 @@
+
 # S.M.A.R.T. M.E.D.I. BOX
 
 **Smart Medication Assistance & Reminder Technology for Monitoring, Efficient Dispensing, and Intelligent Box**
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Arduino](https://img.shields.io/badge/Arduino-Compatible-blue.svg)](https://www.arduino.cc/)
 [![Status](https://img.shields.io/badge/Status-Prototype-orange.svg)]()
 
----
-
 ## 🏥 Project Overview
 
-The **S.M.A.R.T. M.E.D.I. BOX** is an **IoT-enabled, intelligent medication dispenser** designed to enhance medication adherence among elderly and chronically ill patients.  
+The S.M.A.R.T. M.E.D.I. BOX is an intelligent, automated medication dispenser designed to improve medication adherence among elderly and chronically ill patients. This IoT-enabled embedded system combines RFID/NFC authentication, real-time monitoring, and automated alerts to ensure safe and timely medication dispensing[1][2][3][4].
 
-This embedded system integrates **RFID/NFC authentication**, **real-time monitoring**, and **automated caregiver alerts**, offering **secure, timely, and reliable** medication dispensing — far beyond traditional pill organizers.
+### **Key Features**
 
----
-
-## ✨ Key Features
-
-- **🔐 Secure Authentication** – RFID/NFC-based patient verification
-- **⏰ Automated Dispensing** – Precise pill release at scheduled times
-- **📱 SMS Alerts** – Notifies caregivers for missed doses
-- **🆘 Emergency Support** – SOS button sends immediate alerts
-- **🔋 Dual Power Supply** – Battery backup for continuous use
-- **📟 Easy Interface** – LCD display with button navigation
-
----
+- **🔐 Secure Authentication**: RFID/NFC-based patient verification
+- **⏰ Automated Dispensing**: Precise medication dispensing at scheduled times
+- **📱 SMS Alerts**: Real-time notifications to caregivers for missed doses
+- **🆘 Emergency Support**: SOS button for immediate assistance
+- **🔋 Dual Power Supply**: Battery backup for uninterrupted operation
+- **📟 User-Friendly Interface**: LCD display with simple button navigation
 
 ## 🎯 Problem Statement
 
 Elderly and chronically ill patients face significant challenges in medication adherence due to memory loss, visual impairment, and complex medication regimens. Non-adherence leads to serious health complications, increased hospitalizations, and higher healthcare costs[1]. Traditional pill organizers lack automation, real-time monitoring, and caregiver notification capabilities.
 
-**Consequences:**
-- Increased hospitalizations  
-- Severe health deterioration  
-- Higher healthcare costs  
-
-Traditional pill boxes **lack** automation, monitoring, and real-time caregiver notifications.  
-The **S.M.A.R.T. M.E.D.I. BOX** addresses all these gaps.
-
----
-
 ## 🔧 Technical Specifications
 
-### **Hardware**
-| Component | Purpose |
-|-----------|---------|
-| **Microcontroller** | 2× Arduino Uno (Master–Slave setup) |
-| **Authentication** | RFID/NFC Module |
-| **Timing** | DS1302 RTC Module |
-| **Communication** | GSM SIM800L Module |
-| **Sensors** | IR Sensor for pill pickup |
-| **Actuators** | 3× Stepper Motors |
-| **Interface** | 16×2 LCD, Buzzer, Push Buttons |
-| **Power** | 12V Battery + AC Adapter |
+### **Hardware Components**
+- **Microcontroller**: 2x Arduino Uno (Master-slave configuration)
+- **Authentication**: RFID/NFC Module
+- **Timing**: DS1302 RTC Module
+- **Communication**: GSM SIM800L Module
+- **Sensors**: IR Sensor for pill pickup detection
+- **Actuators**: 3x Stepper motors for pill dispensing
+- **Interface**: 16x2 LCD Display, Buzzer, Push buttons
+- **Power**: 12V Battery with AC adapter
 
-### **Software**
-- **Arduino IDE** (v1.8.0+)
-- Libraries:
-  - `LiquidCrystal_I2C`
-  - `Stepper`
-  - `SoftwareSerial`
-  - `DS1302`
-- **Language:** C/C++ (Arduino)
-
----
+### **Software Requirements**
+- Arduino IDE
+- Libraries: `LiquidCrystal_I2C`, `Stepper`, `SoftwareSerial`, `DS1302`
+- Programming Language: C/C++ (Arduino)
 
 ## 🚀 Getting Started
 
 ### **Prerequisites**
 ```
+- Arduino IDE (v1.8.0 or higher)
+- Required Arduino libraries (see src/arduino/libraries/)
+- Hardware components (see hardware/components-list.md)
+```
 
-* Arduino IDE installed
-* Required Arduino libraries (see /src/arduino/libraries/)
-* All hardware components (see /hardware/components-list.md)
+### **Installation**
 
-````
-
-### **Setup Steps**
 1. **Clone the repository**
-   ```bash
-   git clone https://github.com/yourusername/SMART-MEDI-BOX.git
-   cd SMART-MEDI-BOX
-````
+```
+git clone https://github.com/yourusername/SMART-MEDI-BOX.git
+cd SMART-MEDI-BOX
+```
 
-2. **Install Libraries**
+2. **Install Arduino Libraries**
+```
+# Open Arduino IDE
+# Go to Sketch > Include Library > Manage Libraries
+# Install: LiquidCrystal_I2C, Stepper, SoftwareSerial
+```
 
-   * Open Arduino IDE → `Sketch` → `Include Library` → `Manage Libraries`
-   * Install:
+3. **Hardware Setup**
+- Connect components according to circuit diagrams in `hardware/circuit-schematics/`
+- Refer to `hardware/components-list.md` for wiring details
 
-     * LiquidCrystal\_I2C
-     * Stepper
-     * SoftwareSerial
-3. **Assemble Hardware**
-
-   * Use diagrams in `/hardware/circuit-schematics/`
-   * Match wiring to `/hardware/components-list.md`
 4. **Upload Code**
-
-   * Open `/src/arduino/smart_medi_box.ino`
-   * Select **Arduino Uno** & correct COM port
-   * Upload
-
----
+```
+# Open src/arduino/smart_medi_box.ino in Arduino IDE
+# Select correct board and port
+# Upload to Arduino Uno
+```
 
 ## 💡 How It Works
 
-**Workflow:**
+### **System Architecture**
+
+1. **Initialization**: System boots up, initializes all peripherals (RTC, LCD, GSM, RFID, sensors)
+2. **Configuration**: User inputs medication schedules via push buttons
+3. **Authentication**: RFID/NFC verification before medication access
+4. **Dispensing**: Stepper motors rotate pill compartments at scheduled times
+5. **Monitoring**: IR sensors detect pill pickup; alerts sent if missed
+6. **Emergency**: SOS button triggers immediate alerts to caregivers
+
+### **Medication Scheduling Flow**
 
 ```
-Initialization → Schedule Input → RFID Authentication → Dispensing → Pickup Detection → Alerts
+User Input → RTC Scheduling → Authentication → Dispensing → Monitoring → Alerts
 ```
-
-**Key Operations:**
-
-1. **RFID Check** – Patient verifies identity
-2. **RTC Trigger** – Medication release at set time
-3. **Motor Actuation** – Dispenses correct dosage
-4. **Pickup Monitoring** – IR sensor detects pill retrieval
-5. **Alert System** – SMS sent if pill is not collected
-6. **SOS Feature** – Sends immediate caregiver alert
-
----
 
 ## 📊 System Components
 
-| Component      | Function                  |
-| -------------- | ------------------------- |
-| Arduino Uno    | Controls logic & hardware |
-| DS1302 RTC     | Manages schedules         |
-| RFID Module    | Patient verification      |
-| Stepper Motors | Pill dispensing           |
-| GSM Module     | SMS alerts                |
-| IR Sensor      | Pill pickup detection     |
-| LCD + Buttons  | User interface            |
+| Component | Function | Implementation |
+|-----------|----------|----------------|
+| Arduino Uno | Master controller | System coordination and logic |
+| DS1302 RTC | Real-time clock | Medication scheduling |
+| RFID Module | User authentication | Secure access control |
+| Stepper Motors | Pill dispensing | Precise rotation control |
+| GSM Module | SMS alerts | Caregiver notifications |
+| IR Sensor | Pickup detection | Compliance monitoring |
+| LCD Display | User interface | Status and reminders |
 
----
+## 🎯 Target Applications
 
-## 🎯 Target Use Cases
-
-* Elderly living alone
-* Nursing homes & rehabilitation centers
-* Chronic disease patients
-* Remote health monitoring
-
----
+- **Personal Healthcare**: Elderly patients living independently
+- **Healthcare Facilities**: Nursing homes and rehabilitation centers
+- **Chronic Disease Management**: Patients requiring strict medication adherence
+- **Remote Monitoring**: Telehealth and home care services
 
 ## ⚙️ Configuration
 
-### **Example Schedule**
-
-```cpp
+### **Medication Schedule Setup**
+```
+// Example configuration
 TIME_SLOT morning = {8, 0};    // 8:00 AM
-TIME_SLOT afternoon = {14, 0}; // 2:00 PM
+TIME_SLOT afternoon = {14, 0}; // 2:00 PM  
 TIME_SLOT evening = {20, 0};   // 8:00 PM
 ```
 
-### **RFID Registration**
-
-```cpp
+### **RFID Tag Registration**
+```
+// Add authorized RFID tags
 String authorizedTags[] = {
-    "A1B2C3D4", // Patient 1
-    "E5F6G7H8"  // Patient 2
+    "A1B2C3D4",  // Patient 1
+    "E5F6G7H8"   // Patient 2
 };
 ```
 
----
-
 ## 🧪 Testing
 
-**Unit Tests:** `/tests/unit-tests/` – Sensors, motors, GSM, RTC
-**Integration Tests:** `/tests/integration-tests/` – Full workflow
+Run the test suite to verify system functionality:
 
----
+```
+# Hardware tests
+cd tests/unit-tests/
+# Run sensor tests, motor tests, communication tests
+
+# Integration tests  
+cd tests/integration-tests/
+# Run full system workflow tests
+```
 
 ## 📈 Advantages
 
-* Improves medication adherence
-* Prevents unauthorized access
-* Alerts caregivers instantly
-* Simple interface for elderly
-* Reliable with power backup
-* Affordable, uses off-the-shelf parts
-
----
+- **Improved Adherence**: Automated reminders and dispensing reduce missed doses
+- **Enhanced Safety**: RFID authentication prevents unauthorized access
+- **Caregiver Support**: Real-time SMS alerts enable timely interventions
+- **User-Friendly**: Simple interface suitable for elderly users
+- **Reliable Operation**: Battery backup ensures continuous functionality
+- **Cost-Effective**: Affordable solution using standard components
 
 ## 🔒 Limitations
 
-* Max 3 medication types per device
-* Fixed time slots
-* Requires GSM coverage
-* Setup assistance needed
-* Only for solid pills
-
----
+- **Medication Capacity**: Limited to 3 medication types per device
+- **Schedule Flexibility**: Fixed time slots (morning, afternoon, evening)
+- **Network Dependency**: GSM alerts require cellular coverage
+- **Manual Setup**: Initial configuration requires caregiver assistance
+- **Pill Type Restriction**: Designed for solid pills only
 
 ## 🔮 Future Enhancements
 
-* [ ] Mobile app with cloud sync
-* [ ] AI-driven reminders
-* [ ] Voice assistant integration
-* [ ] Multi-patient hospital use
-* [ ] Biometric security
-* [ ] Environmental monitoring (temp/humidity)
-
----
+- [ ] **Mobile App Integration**: Remote monitoring and configuration
+- [ ] **AI-Powered Reminders**: Predictive alerts based on patient behavior
+- [ ] **Voice Assistant**: Audio reminders and voice-controlled interface
+- [ ] **Multi-Patient Support**: Hospital and nursing home deployment
+- [ ] **Cloud Connectivity**: Data analytics and remote physician access
+- [ ] **Biometric Authentication**: Fingerprint or facial recognition
+- [ ] **Environmental Monitoring**: Temperature and humidity sensors
 
 ## 📚 Documentation
 
-* [Project Report](docs/project-report.pdf)
-* [IEEE Conference Paper](docs/ieee-conference-paper.pdf)
-* [Literature Survey](docs/literature-survey.md)
-* [Patent Draft](docs/patent-draft.pdf)
-* [Project Workbook](docs/workbook.pdf)
-
----
+- [**Project Report**](docs/project-report.pdf) - Complete technical documentation
+- [**IEEE Conference Paper**](docs/ieee-conference-paper.pdf) - Research publication
+- [**Literature Survey**](docs/literature-survey.md) - Background research
+- [**Patent Draft**](docs/patent-draft.pdf) - Intellectual property documentation
+- [**Project Workbook**](docs/workbook.pdf) - Development process record
 
 ## 👥 Team
 
-**Dr. D. Y. Patil Institute of Technology, Pimpri, Pune**
+**Dr. D. Y. Patil Institute of Technology, Pimpri, Pune**  
 *Department of Artificial Intelligence & Data Science*
 
-| Name           | Role                                |
-| -------------- | ----------------------------------- |
-| Sahil Kamble   | Hardware Design & Integration       |
-| Pranav Jadhav  | Software Development & Testing      |
-| Mandar Gavali  | System Architecture & Documentation |
-| Parth Giramkar | Sensor Integration & Validation     |
+- **Sahil Kamble** (SAI&DA25) - Hardware Design & Integration
+- **Pranav Jadhav** (SAI&DA17) - Software Development & Testing  
+- **Mandar Gavali** (SAI&DA21) - System Architecture & Documentation
+- **Parth Giramkar** (SAI&DA19) - Sensor Integration & Validation
 
-**Guide:** Prof. Sonam Singh
-**Co-Guide:** Prof. Shubhangi Vairagar
-
----
+**Project Guide**: Prof. Sonam Singh  
+**Co-Guide**: Prof. Shubhangi Vairagar
 
 ## 🏆 Acknowledgments
 
-* Dr. D. Y. Patil Institute of Technology
-* Dept. of AI & Data Science
-* Project Based Learning (PBL) framework
-* All literature and prior research references
-
----
+- **Dr. D. Y. Patil Institute of Technology** for providing resources and support
+- **Department of AI & Data Science** for technical guidance
+- **Project Based Learning (PBL)** course framework
+- Literature survey references and prior research work
 
 ## 📜 License
 
-Licensed under the [MIT License](LICENSE).
-
----
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 📞 Contact
 
-📧 [sahil Kamble](mailto:sahilkamble0134@gmail.com)
-📧 [Pranav Jadhav](mailto:pranavj821@gmail.com)
-📧 [Parth Giramkar](mailto:giramkarparth88@gmail.com)
-📧 [Mandar Gavali](mailto:mandargavali34@gmail.com)
+For questions, suggestions, or collaboration opportunities:
 
-📍 Dr. D. Y. Patil Institute of Technology, Pimpri, Pune
+- **Email**: sahilkamble0134@gmail.com
+- **Email**: pranavj821@gmail.com
+- **Email**: giramkarparth88@gmail.com
+- **Email**: mandargavali34@gmail.com
 
----
+- **Project Repository**: [GitHub](https://github.com/LuciferDono/SMART-MEDI-BOX)
+- **Institution**: Dr. D. Y. Patil Institute of Technology, Pimpri, Pune
 
-⭐ *If you find this project useful, please star the repository to support us!*
+## 🌟 Star This Repository
 
-
+If you found this project helpful, please consider giving it a star ⭐ to show your support!
