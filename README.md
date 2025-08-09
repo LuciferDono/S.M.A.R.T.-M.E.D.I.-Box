@@ -181,17 +181,17 @@ cd tests/integration-tests/
 - [**Project Workbook**](docs/workbook.pdf) - Development process record
 
 ## 👥 Team
+Dr. D. Y. Patil Institute of Technology, Pimpri, Pune
+Department of Artificial Intelligence & Data Science
 
-**Dr. D. Y. Patil Institute of Technology, Pimpri, Pune**  
-*Department of Artificial Intelligence & Data Science*
+Name	Role
+Sahil Kamble	Hardware Design & Integration
+Pranav Jadhav	Software Development & Testing
+Mandar Gavali	System Architecture & Documentation
+Parth Giramkar	Sensor Integration & Validation
 
-- **Sahil Kamble** (SAI&DA25) - Hardware Design & Integration
-- **Pranav Jadhav** (SAI&DA17) - Software Development & Testing  
-- **Mandar Gavali** (SAI&DA21) - System Architecture & Documentation
-- **Parth Giramkar** (SAI&DA19) - Sensor Integration & Validation
-
-**Project Guide**: Prof. Sonam Singh  
-**Co-Guide**: Prof. Shubhangi Vairagar
+Guide: Prof. Sonam Singh
+Co-Guide: Prof. Shubhangi Vairagar
 
 ## 🏆 Acknowledgments
 
