@@ -172,13 +172,6 @@ cd tests/integration-tests/
 - [ ] **Biometric Authentication**: Fingerprint or facial recognition
 - [ ] **Environmental Monitoring**: Temperature and humidity sensors
 
-## 📚 Documentation
-
-- [**Project Report**](docs/project-report.pdf) - Complete technical documentation
-- [**IEEE Conference Paper**](docs/ieee-conference-paper.pdf) - Research publication
-- [**Literature Survey**](docs/literature-survey.md) - Background research
-- [**Patent Draft**](docs/patent-draft.pdf) - Intellectual property documentation
-- [**Project Workbook**](docs/workbook.pdf) - Development process record
 
 ## 👥 Team
 
