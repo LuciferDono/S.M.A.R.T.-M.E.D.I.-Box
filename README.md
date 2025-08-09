@@ -209,7 +209,7 @@ For questions, suggestions, or collaboration opportunities:
 - **Email**: giramkarparth88@gmail.com
 - **Email**: mandargavali34@gmail.com
 
-- **Project Repository**: [GitHub](https://github.com/LuciferDono/SMART-MEDI-BOX)
+- **Project Repository**: [GitHub](https://github.com/LuciferDono/S.M.A.R.T.-M.E.D.I.-Box)
 - **Institution**: Dr. D. Y. Patil Institute of Technology, Pimpri, Pune
 
 ## 🌟 Star This Repository
