@@ -29,10 +29,7 @@ This embedded system integrates **RFID/NFC authentication**, **real-time monitor
 
 ## 🎯 Problem Statement
 
-Elderly and chronically ill patients often:
-- Forget doses due to memory loss
-- Struggle with visual impairments
-- Have complex medication regimens
+Elderly and chronically ill patients face significant challenges in medication adherence due to memory loss, visual impairment, and complex medication regimens. Non-adherence leads to serious health complications, increased hospitalizations, and higher healthcare costs[1]. Traditional pill organizers lack automation, real-time monitoring, and caregiver notification capabilities.
 
 **Consequences:**
 - Increased hospitalizations  
